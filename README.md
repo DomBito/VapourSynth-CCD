@@ -14,7 +14,9 @@ ccd(clip,threshold)
 
 ## Vapoursynth Developers, please re-write this efficiently
 
-Looking at the original CCD's source code, one can notice that the filter basically does a conditional convolution with 16 pixels (+ the center one) in a 25x25 matrix.
+Looking at the original CCD's source code, one can notice that the filter basically does a conditional convolution with 16 pixels (+ the center one) in a 25x25 matrix, like so:
+
+![alt text](https://github.com/DomBito/VapourSynth-CCD/blob/main/matrix.png?raw=true)
 
 The condition is given by the threshold. If the Euclidian distance between the RGB values of the center pixel and a given pixel in the convolution matrix is less than the threshold, then this pixel is considered in the convolution/average.
 After the convolution, the videonode is converted back to YUV, and only the chroma channels are replaced but the convoluted clip, thus preserving luma information.
