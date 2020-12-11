@@ -7,7 +7,7 @@ CCD best removes chroma noise from DVD sources.
 ## Usage
 ccd(clip,threshold)
 
-- clip: Must be bt601 YUV format
+- clip: The video is meant to be bt601 YUV format
 - threshold: [>=0] just use something between 5 and 15 and you will get reasonable results.
 - output: bt601 YUV420P8 format
 
