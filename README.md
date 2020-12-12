@@ -5,10 +5,11 @@ CCD - Camcorder Color Denoise - is an amazing VirtualDub filter made by Sergey S
 CCD best removes chroma noise from DVD sources.
 
 ## Usage
-ccd(clip,threshold)
+ccd(clip,threshold=5,shownoise=False)
 
 - clip: The video is meant to be bt601 YUV format
-- threshold: [>=0] just use something between 5 and 15 and you will get reasonable results.
+- threshold: [>=0] just use something between 3 and 15 and you will get reasonable results.
+- shownoise: if True, shows the removed chroma noise on a black luma clip instead of the filtered video.
 - output: bt601 YUV420P8 format
 
 

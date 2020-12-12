@@ -23,7 +23,7 @@ def r_g_b(src):
 def rgb(channels):
     return core.std.ShufflePlanes(channels,[0,0,0],vs.RGB).resize.Spline36(format=vs.RGBS)
 
-def ccd(src,threshold):
+def ccd(src,threshold=5,shownoise=False):
     borderl = src.std.Crop(right=src.width-12)
     borderr = src.std.Crop(left=src.width-12)
     bordert = src.std.Crop(bottom=src.height-12)
@@ -39,7 +39,7 @@ def ccd(src,threshold):
             .resize.Spline36(format=vs.RGBS)
     [r,g,b] = r_g_b(exp)
 
-    thr = (threshold/255.0)**2
+    thr = threshold**2/195075.0
     expr1 = "x a - 2 pow y b - 2 pow + z c - 2 pow + {} < 1 0 ?".format(thr)
     expr2 = "y 0 > x 0 ?"
     expr3 = "x y + z + a + b + c + d + e + f + g + h + i + j + k + l + m + 1 +"
@@ -62,5 +62,8 @@ def ccd(src,threshold):
     avg = core.std.Expr([exp,c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,c11,c12,c13,c14,c15,c16,den],[expr4,expr4,expr4])\
             .std.Crop(left=12,right=12,top=12,bottom=12).resize.Spline36(format=vs.RGBS)
     dst = core.resize.Spline36(avg,format=vs.YUV420P8,matrix_s='170m')
-    dst = core.std.ShufflePlanes([src,dst],[0,1,2],colorfamily=vs.YUV)
+    if shownoise:
+        dst = core.std.Expr([src,dst],["0", "x y - 128 +"])
+    else:
+        dst = core.std.ShufflePlanes([src,dst],[0,1,2],colorfamily=vs.YUV)
     return dst
