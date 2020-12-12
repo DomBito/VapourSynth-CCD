@@ -2,7 +2,9 @@
 Unoptimized port of CCD for VapourSynth
 
 CCD - Camcorder Color Denoise - is an amazing VirtualDub filter made by Sergey Stolyarevsky (according to [this Doom9 thread](https://forum.doom9.net/showthread.php?t=181549&page=2)).
-CCD best removes chroma noise from DVD sources.
+**It's a chroma denoiser that works great in old sources such as VHSes and DVDs.**
+
+This VS function tries to replicate what the original CCD plugin does.
 
 ## Usage
 ccd(clip,threshold=5,shownoise=False)
