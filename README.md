@@ -1,7 +1,7 @@
 # VapourSynth-CCD
 Unoptimized port of CCD for VapourSynth
 
-CCD - Camcorder Color Denoise - is an amazing VirtualDub filter made by Sergey Stolyarevsky (according to this forum https://forum.doom9.net/showthread.php?t=181549&page=2).
+CCD - Camcorder Color Denoise - is an amazing VirtualDub filter made by Sergey Stolyarevsky (according to [this Doom9 thread](https://forum.doom9.net/showthread.php?t=181549&page=2)).
 CCD best removes chroma noise from DVD sources.
 
 ## Usage
